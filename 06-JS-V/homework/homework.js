@@ -9,11 +9,11 @@ function crearUsuario() {
   // Devuelve la clase
   // Tu código:
   class Usuario {
-   constructor (usuario, nombre, email, password) {
-    this.usuario = usuario,
-    this.nombre = nombre,
-    this.email = email,
-    this.password = password
+   constructor (opciones) {
+    this.usuario = opciones.usuario,
+    this.nombre = opciones.nombre,
+    this.email = opciones.email,
+    this.password = opciones.password
    }
     saludar(){
     return "Hola, mi nombre es " + this.nombre
@@ -37,9 +37,15 @@ function agregarStringInvertida() {
   // Ej: 'menem'.reverse() => menem
   // 'toni'.reverse() => 'inot'
   // Pista: Necesitarás usar "this" dentro de "reverse"
+  
+  var str = '';
   String.prototype.reverse = function(){
-    
+    for(i=this.length-1;i>=0;i--){
+      str=str + this.charAt(i)
+    }
+    return str
   }
+  
 }
 
 // ---------------------------------------------------------------------------//
@@ -54,9 +60,16 @@ function agregarStringInvertida() {
     //  }
 
   class Persona {
-    constructor(/*Escribir los argumentos que recibe el constructor*/) {
+    constructor(nombre,apellido,edad,domicilio) {
       // Crea el constructor:
+      this.nombre=nombre,
+      this.apellido=apellido,
+      this.edad=edad,
+      this.domicilio=domicilio
 
+    }
+    detalle(){
+      return Persona
     }
 }
 
@@ -64,11 +77,16 @@ function crearInstanciaPersona(nombre, apellido, edad, dir) {
   //Con esta función vamos a crear una nueva persona a partir de nuestro constructor de persona (creado en el ejercicio anterior)
   //Recibirá los valores "Juan", "Perez", 22, "Saavedra 123" para sus respectivas propiedades
   //Devolver la nueva persona creada
+  var juan = new Persona("Juan","Perez",22,"Saavedra 123")
+  return juan
 }
   
 function agregarMetodo() {
   //La función agrega un método "datos" a la clase Persona que toma el nombre y la edad de la persona y devuelve: 
   //Ej: "Juan, 22 años"
+  Persona.prototype.datos = function() {
+    return this.nombre + ", " + this.edad + " años"
+  }
 }
   
 
