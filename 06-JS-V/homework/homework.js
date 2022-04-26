@@ -38,18 +38,19 @@ function agregarStringInvertida() {
   // 'toni'.reverse() => 'inot'
   // Pista: Necesitarás usar "this" dentro de "reverse"
   
-  //Otra opción:
-  String.prototype.reverse = function(){
-    return this.split('').reverse().join('')
-  }
-
-  // var str = '';
   // String.prototype.reverse = function(){
-  //   for(i=this.length-1;i>=0;i--){
-  //     str=str + this.charAt(i)
-  //   }
-  //   return str
+  //   return this.split('').reverse().join('')
   // }
+
+  //Otra opción:
+
+  var str = '';
+  String.prototype.reverse = function(){
+    for(i=this.length-1;i>=0;i--){
+      str=str + this[i]
+    }
+    return str
+  }
 }
 
 // ---------------------------------------------------------------------------//
@@ -73,7 +74,13 @@ function agregarStringInvertida() {
 
     }
     detalle(){
-      return Persona
+      let objeto = {
+        nombre: this.nombre,
+        apellido: this.apellido,
+        edad: this.edad,
+        domicilio: this.domicilio
+      }
+      return objeto
     }
 }
 
