@@ -4,7 +4,21 @@ function mayuscula(nombre) {
   //La función recibe un nombre y debe devolver el mismo que recibe pero con su primer letra en mayúscula
   //ej: Recibe "mario" ----> Devuelve "Mario"
   //Tu código:
-  return nombre.charAt(0).toUpperCase()+nombre.slice(1)
+  
+  //Una opción:
+
+  //return nombre.charAt(0).toUpperCase()+nombre.slice(1)
+  
+  //Otra opción:
+
+  var nuevaPalabra = ''
+  for (var i = 0; i < nombre.length; i++) {
+    if(i===0){ 
+      nuevaPalabra = nuevaPalabra + nombre[0].toUpperCase()
+    }
+    else nuevaPalabra = nuevaPalabra + nombre[i]
+  }
+  return nuevaPalabra
 }
 
 function invocarCallback(cb) {
@@ -26,9 +40,20 @@ function sumarArray(numeros, cb) {
   // Pasa el resultado a `cb`
   // No es necesario devolver nada
   //Tu código:
-    cb(numeros.reduce(function(acc, item){
-      return acc + item
-    },0))
+  
+// Una opción pasando el resultado a CB directamente:
+  
+// cb(numeros.reduce(function(acc, item){
+//     return acc + item
+// },0))
+
+//Otra opción, guardando el resultado en una variable:
+
+  var suma = numeros.reduce(function(acc, item){
+    acc = acc + item
+    return acc
+  }, 0)
+  return cb(suma)
 }
 
 function forEach(array, cb) {
@@ -45,19 +70,40 @@ function map(array, cb) {
   // Itera sobre cada valor en "array", pásalo a `cb` y luego ubicar el valor devuelto por `cb` en un nuevo array
   // El nuevo array debe tener la misma longitud que el array del argumento
   //Tu código:
- return array.map(function(elemento){
+ 
+  //Retornando directamente:
+
+  // return array.map(function(elemento){
+  //   return cb(elemento)
+  // })
+  
+  // Esta opción es más avanzada:
+  //return array.map(cb)
+
+  //Guardando el nuevo array en una variable:
+
+  var nuevoArreglo = array.map(function(elemento){
     return cb(elemento)
   })
+  return nuevoArreglo
 }
 
 function filter(array) {
   //Filtrar todos los elementos del array que comiencen con la letra "a".
   //Devolver un nuevo array con los elementos que cumplen la condición
   //Tu código:
- return array.filter(function(word){
-    var letraA = word.charAt(0)==="a"
-    return letraA
+ 
+  // return array.filter(function(elemento){
+  //   var letraA = elemento.charAt(0)==="a"
+  //   return letraA
+  // })
+
+  //Otra opción usando una variable:
+
+  var nuevoArray = array.filter(function(elemento){
+    if(elemento[0]==='a') return elemento
   })
+  return nuevoArray
 }
 
 // No modificar nada debajo de esta línea
